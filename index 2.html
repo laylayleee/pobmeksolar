@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Solar & Pobmek: Engel Avcıları</title>
+    <style>
+        body { margin: 0; background: #1a1a1a; color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; overflow: hidden; user-select: none; }
+        
+        #game-container { position: relative; border: 8px solid #555; box-shadow: 0 0 30px rgba(0,0,0,0.8); }
+        canvas { background: #222; display: block; cursor: none; }
+        
+        /* Üst Bilgi Paneli */
+        #ui-layer { position: absolute; top: 0; left: 0; width: 100%; padding: 10px 20px; box-sizing: border-box; display: flex; justify-content: space-between; font-weight: bold; font-size: 18px; text-shadow: 1px 1px 2px black; pointer-events: none; }
+        
+        .red-status { color: #ff4500; display: flex; align-items: center; gap: 10px; }
+        .blue-status { color: #00bfff; display: flex; align-items: center; gap: 10px; }
+        .level-info { color: white; font-size: 20px; }
+        
+        /* Kilit Durumu */
+        .status-icon { font-size: 20px; }
+        
+        #instructions { margin-top: 15px; color: #888; font-size: 14px; text-align: center; }
+        .key { border: 1px solid #666; padding: 2px 6px; border-radius: 4px; background: #333; color: white; font-family: monospace; }
+        
+        /* Yanma Efekti */
+        #flash { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; opacity: 0; pointer-events: none; transition: opacity 0.1s; }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <div id="ui-layer">
+            <div class="red-status">
+                Solar: <span id="solarCount">0</span>/3 💎 <span id="solarLock" class="status-icon">🔒</span>
+            </div>
+            <div class="level-info" id="levelDisplay">Bölüm 1</div>
+            <div class="blue-status">
+                <span id="pobmekLock" class="status-icon">🔒</span> Pobmek: <span id="pobmekCount">0</span>/3 💎
+            </div>
+        </div>
+        <div id="flash"></div>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+    </div>
+
+    <div id="instructions">
+        Yeniden Başlat: <span class="key">R</span> | Solar: <span class="key">Yön Tuşları</span> | Pobmek: <span class="key">W, A, D</span>
+        <br>Not: Kapıyı açmak için 3 elması da topla!
+    </div>
+
+<script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+const flash = document.getElementById("flash");
+
+// --- AYARLAR ---
+const GRAVITY = 0.6;
+const FRICTION = 0.85;
+const ACCELERATION = 0.8;
+const MAX_SPEED = 5.5;
+const JUMP_FORCE = -11.5;
+
+// --- OYUN DURUMU ---
+let currentLevel = 0;
+let solarGems = 0; // Bu seviyede toplanan
+let pobmekGems = 0; // Bu seviyede toplanan
+let isGameOver = false;
+
+// Karakterler
+const solar = { x: 50, y: 480, w: 30, h: 30, dx: 0, dy: 0, grounded: false };
+const pobmek = { x: 100, y: 480, w: 34, h: 30, dx: 0, dy: 0, grounded: false };
+
+const keys = {};
+
+// --- BÖLÜMLER (2 Tane) ---
+const levels = [
+    // BÖLÜM 1: Başlangıç
+    {
+        platforms: [
+            { x: 0, y: 550, w: 800, h: 50, type: 'wall' }, // Zemin
+            { x: 0, y: 0, w: 800, h: 20, type: 'wall' },   // Tavan
+            { x: 0, y: 0, w: 20, h: 600, type: 'wall' },   // Sol
+            { x: 780, y: 0, w: 20, h: 600, type: 'wall' }, // Sağ
+            
+            { x: 0, y: 400, w: 200, h: 20, type: 'wall' },
+            { x: 600, y: 400, w: 200, h: 20, type: 'wall' },
+            { x: 300, y: 300, w: 200, h: 20, type: 'wall' },
+            { x: 100, y: 200, w: 150, h: 20, type: 'wall' },
+            { x: 550, y: 200, w: 150, h: 20, type: 'wall' },
+            
+            // DİKENLER (Spikes) - Herkesi öldürür
+            { x: 300, y: 530, w: 200, h: 20, type: 'spike' },
+            { x: 350, y: 280, w: 100, h: 20, type: 'spike' } // Orta platformun üstünde
+        ],
+        gems: [
+            // Solar (Kırmızı) - 3 Tane
+            { x: 50, y: 350, w: 20, h: 20, type: 'red', collected: false },
+            { x: 120, y: 150, w: 20, h: 20, type: 'red', collected: false },
+            { x: 700, y: 500, w: 20, h: 20, type: 'red', collected: false },
+            
+            // Pobmek (Mavi) - 3 Tane
+            { x: 720, y: 350, w: 20, h: 20, type: 'blue', collected: false },
+            { x: 600, y: 150, w: 20, h: 20, type: 'blue', collected: false },
+            { x: 100, y: 500, w: 20, h: 20, type: 'blue', collected: false }
+        ],
+        doors: [
+            { x: 50, y: 140, w: 50, h: 60, type: 'solar' }, 
+            { x: 700, y: 140, w: 50, h: 60, type: 'pobmek' } 
+        ]
+    },
+    // BÖLÜM 2: Zorlu Parkur
+    {
+        platforms: [
+            { x: 0, y: 550, w: 800, h: 50, type: 'wall' },
+            { x: 0, y: 0, w: 20, h: 600, type: 'wall' },
+            { x: 780, y: 0, w: 20, h: 600, type: 'wall' },
+            
+            { x: 100, y: 450, w: 100, h: 20, type: 'wall' },
+            { x: 300, y: 450, w: 100, h: 20, type: 'wall' },
+            { x: 500, y: 450, w: 100, h: 20, type: 'wall' },
+            
+            { x: 0, y: 300, w: 700, h: 20, type: 'wall' }, // Uzun ara kat
+            { x: 700, y: 200, w: 80, h: 20, type: 'wall' }, // Zıplama noktası
+            { x: 300, y: 150, w: 200, h: 20, type: 'wall' }, // Tepe
+
+            // DİKENLER
+            { x: 200, y: 530, w: 100, h: 20, type: 'spike' },
+            { x: 400, y: 530, w: 100, h: 20, type: 'spike' },
+            { x: 600, y: 530, w: 100, h: 20, type: 'spike' },
+            { x: 300, y: 280, w: 300, h: 20, type: 'spike' } // Ara katın üstü tuzaklı
+        ],
+        gems: [
+            // Solar (Kırmızı)
+            { x: 120, y: 400, w: 20, h: 20, type: 'red', collected: false },
+            { x: 400, y: 250, w: 20, h: 20, type: 'red', collected: false }, // Dikenlerin arasında
+            { x: 350, y: 100, w: 20, h: 20, type: 'red', collected: false }, // En tepede
+            
+            // Pobmek (Mavi)
+            { x: 520, y: 400, w: 20, h: 20, type: 'blue', collected: false },
+            { x: 100, y: 250, w: 20, h: 20, type: 'blue', collected: false },
+            { x: 720, y: 150, w: 20, h: 20, type: 'blue', collected: false }
+        ],
+        doors: [
+            { x: 60, y: 240, w: 50, h: 60, type: 'solar' },
+            { x: 380, y: 90, w: 50, h: 60, type: 'pobmek' } // Tepede
+        ]
+    }
+];
+
+// --- KONTROLLER ---
+document.addEventListener("keydown", (e) => {
+    keys[e.code] = true;
+    if (e.code === 'KeyR') resetLevel();
+});
+document.addEventListener("keyup", (e) => keys[e.code] = false);
+
+// --- OYUN MOTORU ---
+
+function resetLevel() {
+    isGameOver = false;
+    flash.style.opacity = 0;
+    
+    solar.x = 50; solar.y = 480; solar.dx = 0; solar.dy = 0;
+    pobmek.x = 100; pobmek.y = 480; pobmek.dx = 0; pobmek.dy = 0;
+    
+    // Elmasları sıfırla
+    levels[currentLevel].gems.forEach(g => g.collected = false);
+    solarGems = 0;
+    pobmekGems = 0;
+    
+    updateUI();
+}
+
+function updateUI() {
+    // Skorları Güncelle
+    document.getElementById('solarCount').innerText = solarGems;
+    document.getElementById('pobmekCount').innerText = pobmekGems;
+    document.getElementById('levelDisplay').innerText = "Bölüm " + (currentLevel + 1);
+    
+    // Kilit Simgelerini Güncelle
+    const solarIcon = document.getElementById('solarLock');
+    if (solarGems >= 3) { solarIcon.innerText = "🔓"; solarIcon.style.textShadow = "0 0 10px yellow"; }
+    else { solarIcon.innerText = "🔒"; solarIcon.style.textShadow = "none"; }
+    
+    const pobmekIcon = document.getElementById('pobmekLock');
+    if (pobmekGems >= 3) { pobmekIcon.innerText = "🔓"; pobmekIcon.style.textShadow = "0 0 10px yellow"; }
+    else { pobmekIcon.innerText = "🔒"; pobmekIcon.style.textShadow = "none"; }
+}
+
+function triggerDeath() {
+    if (isGameOver) return;
