@@ -57,20 +57,32 @@
             overflow-x: hidden;
         }
 
-        /* Google Translate Ayarları */
+        /* Google Translate Ayarları (Beyaz & İngilizce Zorlamalı) */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
-        .goog-te-gadget-simple { background-color: rgba(255,255,255,0.1) !important; border: 1px solid rgba(255,255,255,0.3) !important; border-radius: 6px !important; padding: 4px 8px !important; transition: all 0.3s ease; }
-        .goog-te-gadget-simple:hover { background-color: rgba(255,255,255,0.2) !important; }
-        .goog-te-gadget-simple .goog-te-menu-value span { color: white !important; font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 1px; }
-        .goog-te-gadget-icon { display: none; }
+        .goog-te-gadget-simple { 
+            background-color: rgba(255, 255, 255, 0.05) !important; 
+            border: 1px solid rgba(255, 255, 255, 0.3) !important; 
+            border-radius: 6px !important; 
+            padding: 6px 12px !important; 
+            transition: all 0.3s ease; 
+        }
+        .goog-te-gadget-simple:hover { border-color: #fff !important; background-color: rgba(255, 255, 255, 0.1) !important; }
+        .goog-te-gadget-simple span { 
+            color: #ffffff !important; 
+            font-family: var(--font-sans) !important; 
+            font-size: 0.8rem !important; 
+            letter-spacing: 1px !important; 
+            text-transform: uppercase !important;
+        }
+        .goog-te-gadget-icon { display: none !important; }
 
         h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 700; letter-spacing: 1px; }
         a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* Haber Şeridi - Hızı Yavaşlatıldı (60s) */
+        /* Haber Şeridi (60 saniye, Yavaş ve Akıcı) */
         .news-ticker {
             background: rgba(5, 0, 2, 0.9);
             color: var(--text-muted);
@@ -188,7 +200,7 @@
 
         .the-duo { grid-column: 1 / -1; background: linear-gradient(135deg, rgba(30,0,5,0.8), rgba(60,0,15,0.6)); padding: 40px; margin-top: 20px; }
         
-        /* 3. Official Content Cards (Now 3 Cards) */
+        /* 3. Official Content Cards (3 Cards) */
         .official-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px; }
         .card { padding: 40px 30px; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .card:hover { border-color: var(--accent-red); transform: translateY(-4px); }
@@ -303,7 +315,6 @@
         #authError, #postMessage, #editPostMessage { font-size: 0.85rem; text-align: center; margin-bottom: 10px; min-height: 20px; font-weight: bold; }
         #authError { color: var(--accent-red); }
         #postMessage, #editPostMessage { color: #4caf50; }
-
 
         /* =======================================================
            📱 MOBİL EKRANLAR (SMARTPHONE) İÇİN KOMPAKT TASARIM
@@ -895,7 +906,7 @@
             new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'tr,th,es,ja,ko,zh-CN,id,vi', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
         }
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&hl=en"></script>
 
     <!-- FİREBASE SİSTEMİ VE JS MANTIĞI -->
     <script type="module">
