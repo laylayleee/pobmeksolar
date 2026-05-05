@@ -57,6 +57,26 @@
             overflow-x: hidden;
         }
 
+        /* Google Translate Ayarları (Beyaz & Sadece TR/EN için uygun) */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        .goog-te-gadget-simple { 
+            background-color: rgba(255, 255, 255, 0.05) !important; 
+            border: 1px solid rgba(255, 255, 255, 0.3) !important; 
+            border-radius: 6px !important; 
+            padding: 6px 12px !important; 
+            transition: all 0.3s ease; 
+        }
+        .goog-te-gadget-simple:hover { border-color: #fff !important; background-color: rgba(255, 255, 255, 0.1) !important; }
+        .goog-te-gadget-simple span { 
+            color: #ffffff !important; 
+            font-family: var(--font-sans) !important; 
+            font-size: 0.8rem !important; 
+            letter-spacing: 1px !important; 
+            text-transform: uppercase !important;
+        }
+        .goog-te-gadget-icon { display: none !important; }
+
         h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 700; letter-spacing: 1px; }
         a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
 
@@ -406,6 +426,9 @@
                     <li><a onclick="showHomePage('#community')">Community</a></li>
                     
                     <li id="loginNavLi"><a class="signup-link no-line" style="cursor:pointer;" onclick="openAuth('login')">LOG IN</a></li>
+                    
+                    <!-- GOOGLE TRANSLATE BUTTON -->
+                    <li id="google_translate_element" style="margin-top: -2px;"></li>
 
                     <li id="userPanelLi" class="user-panel">
                         <button class="btn" style="padding: 8px 16px; font-size: 0.75rem; box-shadow: none;" onclick="openPostPanel()">+ NEW POST</button>
@@ -877,6 +900,13 @@
         </div>
     </div>
 
+    <!-- GOOGLE TRANSLATE SCRIPT (THAI & ENGLISH ONLY) -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,th', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&hl=en"></script>
 
     <!-- FİREBASE SİSTEMİ VE JS MANTIĞI -->
     <script type="module">
