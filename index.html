@@ -118,11 +118,17 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
         /* 1. Hero Section */
-        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 100px; align-items: center; }
+        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 60px; align-items: center; }
         .hero-text h1 { font-size: 4.5rem; color: var(--text-main); margin-bottom: 15px; line-height: 1.1; text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
         .hero-text h1 span { color: var(--accent-red); font-size: 2.2rem; display: block; letter-spacing: 6px; margin-top: 10px; text-shadow: 0 0 15px rgba(255,0,51,0.4); }
         .hero-text p { color: var(--text-muted); margin-bottom: 40px; font-size: 1.2rem; font-weight: 300; line-height: 1.8; }
         .hero-image { width: 100%; height: 500px; }
+
+        /* DEVIL'S KISS BANNER */
+        .concert-banner { margin-bottom: 100px; padding: 0; overflow: hidden; border: 1px solid rgba(255,0,51,0.4); box-shadow: 0 0 40px rgba(255,0,51,0.2); text-align: center; }
+        .concert-banner img { width: 100%; height: auto; display: block; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .concert-banner .banner-content { padding: 25px 20px; background: linear-gradient(to top, rgba(10,0,2,0.95), rgba(138,0,28,0.3)); }
+        .concert-banner h2 { color: white; font-size: 2rem; letter-spacing: 4px; margin-bottom: 15px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
 
         /* 2. Who is PerthSanta Section */
         .about-ps { padding: 60px; margin-bottom: 80px; position: relative; overflow: hidden; }
@@ -257,6 +263,10 @@
             .hero-image { height: 180px; width: 100%; border-radius: 12px; }
             .hero-text h1 { font-size: 2.2rem; margin-bottom: 5px; }
             .hero-text h1 span { font-size: 1.1rem; letter-spacing: 1px; margin-top: 5px; }
+            
+            .concert-banner h2 { font-size: 1.4rem; letter-spacing: 2px; }
+            .concert-banner .btn { padding: 10px 20px; font-size: 0.9rem; }
+            
             .about-ps, .official-content, .community-area { margin-bottom: 30px; padding: 20px 15px; }
             .detail-header h2 { font-size: 1.5rem; margin-bottom: 5px; }
             .card h2 { font-size: 1.4rem; margin-bottom: 10px; }
@@ -322,6 +332,16 @@
                 <a href="#community" class="btn" data-lang="heroBtn">ENTER THE UNIVERSE &rarr;</a>
             </div>
             <img src="enter-universe.jfif.JPG" alt="Enter the Universe" class="content-image hero-image">
+        </section>
+
+        <!-- YENİ: DEVIL'S KISS CONCERT BANNER -->
+        <section id="devils-kiss-promo" class="glass-card concert-banner">
+            <!-- DİKKAT: Fotoğraf isminin devils-kiss.jpg olduğundan emin ol -->
+            <img src="devils-kiss.jpg" alt="PerthSanta Devil's Kiss Concert">
+            <div class="banner-content">
+                <h2 data-lang="concertTitle">DEVIL'S KISS CONCERT</h2>
+                <a href="#" class="btn" style="box-shadow: 0 5px 20px rgba(255,0,51,0.6);" data-lang="btnConcert">COMING SOON &rarr;</a>
+            </div>
         </section>
 
         <section id="about" class="about-ps glass-card">
@@ -818,6 +838,11 @@
             'heroTitle': { en: "ENTER THE <br><span>PERTHSANTA UNIVERSE</span>", th: "เข้าสู่ <br><span>จักรวาล PERTHSANTA</span>" },
             'heroSub': { en: "Everything about PerthSanta is here.", th: "ทุกอย่างเกี่ยวกับ PerthSanta อยู่ที่นี่" },
             'heroBtn': { en: "ENTER THE UNIVERSE &rarr;", th: "เข้าสู่จักรวาล &rarr;" },
+            
+            // CONCERT BANNER
+            'concertTitle': { en: "DEVIL'S KISS CONCERT", th: "คอนเสิร์ต DEVIL'S KISS" },
+            'btnConcert': { en: "COMING SOON &rarr;", th: "เร็วๆ นี้ &rarr;" },
+
             'aboutTitle': { en: "WHO IS PERTHSANTA?", th: "PERTHSANTA คือใคร?" },
             'aboutP1': { en: "Two distinct paths, one powerful universe. Perth Tanapon and Santa Pongsapak form one of the most dynamic and fiercely talented duos in the Thai entertainment industry.", th: "สองเส้นทางที่แตกต่างสู่หนึ่งจักรวาลที่ทรงพลัง Perth Tanapon และ Santa Pongsapak คือหนึ่งในคู่หูที่มีความสามารถและโดดเด่นที่สุดในวงการบันเทิงไทย" },
             'aboutP2': { en: "Individually, they have proven themselves as versatile artists. Together, their magnetic on-screen chemistry and shared passion for storytelling have created an unstoppable force.", th: "ในฐานะศิลปินเดี่ยว พวกเขาได้พิสูจน์ตัวเองแล้วว่าเป็นศิลปินที่เก่งกาจ และเมื่อรวมกัน เคมีบนหน้าจอที่ดึงดูดใจของพวกเขาได้สร้างพลังที่ไม่อาจต้านทานได้" },
@@ -842,7 +867,7 @@
             // KULLANICI ÖZEL DÜZELTMESİ (P10L)
             'descP10L': { 
                 en: "The series explores the intricate dynamics of university life, following six students and three couples. It highlights the deep, protective bonds formed within the prestigious 'Perfect 10' engineering lineage, bringing Perth and Santa's dynamic chemistry to the forefront.", 
-                th: "ซีรีส์เรื่องนี้ถ่ายทอดความซับซ้อนของชีวิตมหาวิทยาลัย ผ่านเรื่องราวของนักศึกษา 6 คนและ 3 คู่รัก โดยเน้นสายสัมพันธ์อันแน่นแฟ้นที่ก่อตัวขึ้นภายในสายวิศวกรรมชื่อดัง 'Perfect 10' พร้อมนำเสนอเคมีของ Perth และ Santa ได้อย่างลงตัว" 
+                th: "ซีรีส์เรื่องนี้ถ่ายทอดความซับซ้อนของชีวิตมหาวิทยาลัย ผ่านเรื่องราวของนักศึกษา 6 คนและ 3 คู่รัก โดยเน้นสายสัมพันธ์อันแน่นแฟ้นที่ก่อตัวขึ้นภายในสายวิศวกรรมชื่อดัง “Perfect 10” พร้อมนำเสนอเคมีของ Perth และ Santa ได้อย่างลงตัว" 
             },
             
             'watchP10L': { en: "Watch on: GMMTV YouTube Channel", th: "รับชมทาง: GMMTV YouTube Channel" },
