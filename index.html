@@ -251,6 +251,8 @@
             header { padding: 15px 0; margin-bottom: 20px; }
             .header-content { flex-direction: column; gap: 10px; }
             nav ul { gap: 15px; justify-content: center; flex-wrap: wrap; font-size: 0.75rem; }
+            .logo-img { width: 30px; height: 30px; }
+            .creator-text { font-size: 0.7rem; }
             .hero { display: flex; flex-direction: column; text-align: center; gap: 20px; margin-bottom: 30px; }
             .hero-image { height: 180px; width: 100%; border-radius: 12px; }
             .hero-text h1 { font-size: 2.2rem; margin-bottom: 5px; }
@@ -398,7 +400,7 @@
             </div>
         </section>
 
-        <!-- 3. Official Content Cards (3 Cards) -->
+        <!-- 3. Official Content Cards -->
         <section id="official" class="official-content">
             <div class="card glass-card">
                 <div class="card-icon">🎬</div>
@@ -836,7 +838,13 @@
             'cardInterviewsSub': { en: "Watch their exclusive interviews, variety shows, and promotional content.", th: "รับชมบทสัมภาษณ์สุดพิเศษ รายการวาไรตี้ และเนื้อหาโปรโมตของพวกเขา" },
             'btnWatchNow': { en: "WATCH NOW &rarr;", th: "ชมเลย &rarr;" },
             'titleSeriesHub': { en: "PERTHSANTA SERIES", th: "ซีรีส์ของ PERTHSANTA" },
-            'descP10L': { en: "The series explores the intricate dynamics of university life, following six students and three couples. It highlights the deep, protective bonds formed within the prestigious 'Perfect 10' engineering lineage, bringing Perth and Santa's dynamic chemistry to the forefront.", th: "ซีรีส์เรื่องนี้สำรวจชีวิตในมหาวิทยาลัยที่ซับซ้อน ติดตามนักศึกษาหกคนและสามคู่ เน้นให้เห็นถึงความผูกพันที่ลึกซึ้งและปกป้องซึ่งกันและกันซึ่งก่อตัวขึ้นในสายวิศวกรรม 'Perfect 10' ที่มีชื่อเสียง" },
+            
+            // KULLANICI ÖZEL DÜZELTMESİ (P10L)
+            'descP10L': { 
+                en: "The series explores the intricate dynamics of university life, following six students and three couples. It highlights the deep, protective bonds formed within the prestigious 'Perfect 10' engineering lineage, bringing Perth and Santa's dynamic chemistry to the forefront.", 
+                th: "ซีรีส์เรื่องนี้ถ่ายทอดความซับซ้อนของชีวิตมหาวิทยาลัย ผ่านเรื่องราวของนักศึกษา 6 คนและ 3 คู่รัก โดยเน้นสายสัมพันธ์อันแน่นแฟ้นที่ก่อตัวขึ้นภายในสายวิศวกรรมชื่อดัง 'Perfect 10' พร้อมนำเสนอเคมีของ Perth และ Santa ได้อย่างลงตัว" 
+            },
+            
             'watchP10L': { en: "Watch on: GMMTV YouTube Channel", th: "รับชมทาง: GMMTV YouTube Channel" },
             'descLYT': { en: "A deeply emotional and mature narrative. After a serious accident, Solar suffers neurological damage. Pobmek's life changes dramatically as he is forced to balance the roles of a fiercely loving partner and a dedicated caregiver, pushing the boundaries of their acting skills.", th: "เรื่องราวที่เต็มไปด้วยอารมณ์ หลังจากอุบัติเหตุร้ายแรง Solar ได้รับความเสียหายทางระบบประสาท ชีวิตของ Pobmek เปลี่ยนไปอย่างมากเมื่อเขาต้องสร้างสมดุลระหว่างบทบาทของคนรักและผู้ดูแล" },
             'watchLYT': { en: "Watch on: Viki & oneD app", th: "รับชมทาง: Viki และ oneD app" },
@@ -848,9 +856,21 @@
             'musicPerth': { en: "PERTH SOLO", th: "ผลงานเดี่ยวของ PERTH" },
             'descMusicPerth': { en: "Known for his raw vocals and impressive guitar skills, his solo tracks reflect a deeply personal side of his artistry.", th: "เป็นที่รู้จักจากเสียงร้องที่ดิบและทักษะกีตาร์ที่น่าประทับใจ เพลงเดี่ยวของเขาสะท้อนให้เห็นถึงความเป็นศิลปินในมุมที่ลึกซึ้ง" },
             'musicJasper': { en: "JASPER (T-POP GROUP)", th: "JASPER (ศิลปินกลุ่ม T-POP)" },
-            'descMusicJasper': { en: "Discover the rhythmic and highly energetic tracks by <strong>Jasper</strong>, combining captivating beats with dynamic flair.", th: "ค้นพบเพลงที่มีจังหวะและเต็มไปด้วยพลังของ <strong>Jasper</strong> ซึ่งผสมผสานจังหวะที่น่าดึงดูดใจเข้ากับลีลาที่มีชีวิตชีวา" },
+            
+            // KULLANICI ÖZEL DÜZELTMESİ (JASPER)
+            'descMusicJasper': { 
+                en: "Discover the rhythmic and highly energetic tracks by <strong>Jasper</strong>, combining captivating beats with dynamic flair.", 
+                th: "ค้นพบเพลงจังหวะสนุกและเปี่ยมพลังของ <strong>Jasper</strong> ที่ผสานบีตชวนติดหูเข้ากับสไตล์ที่มีชีวิตชีวา" 
+            },
+            
             'musicIndividual': { en: "INDIVIDUAL OSTs", th: "เพลงประกอบเดี่ยว" },
-            'descMusicIndividual': { en: "Relive the emotional highs of their individual acting careers through their original soundtracks.", th: "หวนรำลึกถึงอารมณ์อันลึกซึ้งในอาชีพการแสดงของพวกเขาผ่านเพลงประกอบดั้งเดิม" },
+            
+            // KULLANICI ÖZEL DÜZELTMESİ (INDIVIDUAL OSTS)
+            'descMusicIndividual': { 
+                en: "Relive the emotional highs of their individual acting careers through their original soundtracks.", 
+                th: "หวนย้อนสัมผัสช่วงเวลาทางอารมณ์อันเข้มข้นจากเส้นทางการแสดงของพวกเขาผ่านเพลงประกอบของแต่ละคน" 
+            },
+            
             'trackPerth': { en: "Perth Tracks:", th: "เพลงของ Perth:" },
             'trackSanta': { en: "Santa Tracks:", th: "เพลงของ Santa:" },
             'titleInterviews': { en: "EXCLUSIVE INTERVIEWS", th: "บทสัมภาษณ์สุดพิเศษ" },
