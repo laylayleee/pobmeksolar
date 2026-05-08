@@ -290,7 +290,7 @@
 
     <div class="news-ticker">
         <div class="ticker-content">
-            📺 <span data-lang="ticker1">CATCH 'LOVE YOU TEACHER' EVERY SATURDAY ON VIKI & ONED APP!</span> 📺 &nbsp;&nbsp;&nbsp;&nbsp;✨&nbsp;&nbsp;&nbsp;&nbsp; 🎵<span data-lang="ticker2">JASPER’S NEW SONG “LOVE SCENE” IS COMING ON MAY 8 ON THE RISER MUSIC CHANNEL</span>🎵 &nbsp;&nbsp;&nbsp;&nbsp;✨&nbsp;&nbsp;&nbsp;&nbsp; 📺 <span data-lang="ticker1">CATCH 'LOVE YOU TEACHER' EVERY SATURDAY ON VIKI & ONED APP!</span> 📺 &nbsp;&nbsp;&nbsp;&nbsp;✨&nbsp;&nbsp;&nbsp;&nbsp; 🎵<span data-lang="ticker2">JASPER’S NEW SONG “LOVE SCENE” IS COMING ON MAY 8 ON THE RISER MUSIC CHANNEL</span>🎵
+            📺 <span data-lang="ticker1">CATCH 'LOVE YOU TEACHER' EVERY SATURDAY ON VIKI & ONED APP!</span> 📺 &nbsp;&nbsp;&nbsp;&nbsp;✨&nbsp;&nbsp;&nbsp;&nbsp; 🎵<span data-lang="ticker2">JASPER’S NEW SONG “LOVE SCENE” MV IS OUT NOW! WATCH IT ON YOUTUBE</span>🎵 &nbsp;&nbsp;&nbsp;&nbsp;✨&nbsp;&nbsp;&nbsp;&nbsp; 📺 <span data-lang="ticker1">CATCH 'LOVE YOU TEACHER' EVERY SATURDAY ON VIKI & ONED APP!</span> 📺 &nbsp;&nbsp;&nbsp;&nbsp;✨&nbsp;&nbsp;&nbsp;&nbsp; 🎵<span data-lang="ticker2">JASPER’S NEW SONG “LOVE SCENE” MV IS OUT NOW! WATCH IT ON YOUTUBE</span>🎵
         </div>
     </div>
 
@@ -498,7 +498,7 @@
                     <h3 data-lang="musicJasper">JASPER (T-POP GROUP)</h3>
                     <p data-lang="descMusicJasper">Discover the rhythmic and highly energetic tracks by <strong>Jasper</strong>, combining captivating beats with dynamic flair.</p>
                     <div class="song-list">
-                        <a href="#" target="_blank" class="yt-link" style="border-color: var(--accent-red);"><span>▶</span> LOVE SCENE (NEW!)</a>
+                        <a href="https://youtu.be/pURfo4ey5y0" target="_blank" class="yt-link" style="border-color: var(--accent-red); box-shadow: 0 0 10px rgba(255,0,51,0.5);"><span>▶</span> LOVE SCENE (NEW MV!)</a>
                         <a href="https://youtu.be/YpVjU4OJ4Ms" target="_blank" class="yt-link"><span>▶</span> Sadistic</a>
                         <a href="https://youtu.be/KO78TDSp_bo" target="_blank" class="yt-link"><span>▶</span> Take It Off</a>
                         <a href="https://youtu.be/qLb9ZfWBxIw" target="_blank" class="yt-link"><span>▶</span> Touch</a>
@@ -637,7 +637,6 @@
         </div>
 
     </main>
-
 
     <div class="container">
         <footer style="margin-top: 50px; display: flex; flex-direction: column; align-items: center; gap: 30px; background: #020000; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.1);">
@@ -805,7 +804,6 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // GLOBAL DEĞİŞKENLER
         window.currentArchiveCategory = "Fan Fiction";
         window.allCommunityPosts = [];
         window.currentAuthMode = 'login';
@@ -813,19 +811,15 @@
         window.currentUsername = ""; 
         const ADMIN_EMAIL = "laylayleeepsuniverse@gmail.com";
         
-        // PAGINATION SETTINGS
         window.currentPage = 1;
         const POSTS_PER_PAGE = 50;
 
         const monthsEn = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         const monthsTh = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
 
-        // ==========================================
-        // DİL SÖZLÜĞÜ (ENGLISH & THAI)
-        // ==========================================
         const langDict = {
             'ticker1': { en: "CATCH 'LOVE YOU TEACHER' EVERY SATURDAY ON VIKI & ONED APP!", th: "ติดตาม 'LOVE YOU TEACHER' ทุกวันเสาร์ทาง VIKI และแอป ONED!" },
-            'ticker2': { en: "JASPER’S NEW SONG “LOVE SCENE” IS COMING ON MAY 8 ON THE RISER MUSIC CHANNEL", th: "เพลงใหม่ของ JASPER “LOVE SCENE” กำลังจะมาในวันที่ 8 พฤษภาคม ทางช่อง RISER MUSIC" },
+            'ticker2': { en: "JASPER’S NEW SONG “LOVE SCENE” MV IS OUT NOW! WATCH IT ON YOUTUBE", th: "มิวสิกวิดีโอเพลงใหม่ของ JASPER “LOVE SCENE” ปล่อยออกมาแล้ว! รับชมได้ทาง YOUTUBE" },
             'navHome': { en: "Home", th: "หน้าแรก" },
             'navSchedule': { en: "Schedule", th: "ตารางงาน" },
             'navAbout': { en: "About", th: "เกี่ยวกับ" },
@@ -838,11 +832,7 @@
             'heroSub': { en: "Everything about PerthSanta is here.", th: "ทุกอย่างเกี่ยวกับ PerthSanta อยู่ที่นี่" },
             'heroBtn': { en: "ENTER THE UNIVERSE &rarr;", th: "เข้าสู่จักรวาล &rarr;" },
             
-            // CONCERT BANNER & SCHEDULE
-            'concertTitle': { 
-                en: "PERTHSANTA'S FIRST CONCERT \"DEVIL'S KISS\" ON JULY 18-19", 
-                th: "คอนเสิร์ตครั้งแรกของ PERTHSANTA \"DEVIL'S KISS\" วันที่ 18-19 กรกฎาคมนี้" 
-            },
+            'concertTitle': { en: "PERTHSANTA'S FIRST CONCERT \"DEVIL'S KISS\" ON JULY 18-19", th: "คอนเสิร์ตครั้งแรกของ PERTHSANTA \"DEVIL'S KISS\" วันที่ 18-19 กรกฎาคมนี้" },
             'btnConcert': { en: "COMING SOON", th: "เร็วๆ นี้" },
             'scheduleTitle': { en: "2026 EVENT SCHEDULE", th: "ตารางกิจกรรมปี 2026" },
             'scheduleSub': { en: "Stay updated with Perth and Santa's official activities.", th: "ติดตามกิจกรรมอย่างเป็นทางการของ Perth และ Santa" },
@@ -871,12 +861,7 @@
             'btnWatchNow': { en: "WATCH NOW &rarr;", th: "ชมเลย &rarr;" },
             'titleSeriesHub': { en: "PERTHSANTA SERIES", th: "ซีรีส์ของ PERTHSANTA" },
             
-            // KULLANICI ÖZEL DÜZELTMESİ (P10L)
-            'descP10L': { 
-                en: "The series explores the intricate dynamics of university life, following six students and three couples. It highlights the deep, protective bonds formed within the prestigious 'Perfect 10' engineering lineage, bringing Perth and Santa's dynamic chemistry to the forefront.", 
-                th: "ซีรีส์เรื่องนี้ถ่ายทอดความซับซ้อนของชีวิตมหาวิทยาลัย ผ่านเรื่องราวของนักศึกษา 6 คนและ 3 คู่รัก โดยเน้นสายสัมพันธ์อันแน่นแฟ้นที่ก่อตัวขึ้นภายในสายวิศวกรรมชื่อดัง “Perfect 10” พร้อมนำเสนอเคมีของ Perth และ Santa ได้อย่างลงตัว" 
-            },
-            
+            'descP10L': { en: "The series explores the intricate dynamics of university life, following six students and three couples. It highlights the deep, protective bonds formed within the prestigious 'Perfect 10' engineering lineage, bringing Perth and Santa's dynamic chemistry to the forefront.", th: "ซีรีส์เรื่องนี้ถ่ายทอดความซับซ้อนของชีวิตมหาวิทยาลัย ผ่านเรื่องราวของนักศึกษา 6 คนและ 3 คู่รัก โดยเน้นสายสัมพันธ์อันแน่นแฟ้นที่ก่อตัวขึ้นภายในสายวิศวกรรมชื่อดัง “Perfect 10” พร้อมนำเสนอเคมีของ Perth และ Santa ได้อย่างลงตัว" },
             'watchP10L': { en: "Watch on: GMMTV YouTube Channel", th: "รับชมทาง: GMMTV YouTube Channel" },
             'descLYT': { en: "A deeply emotional and mature narrative. After a serious accident, Solar suffers neurological damage. Pobmek's life changes dramatically as he is forced to balance the roles of a fiercely loving partner and a dedicated caregiver, pushing the boundaries of their acting skills.", th: "เรื่องราวที่เต็มไปด้วยอารมณ์ หลังจากอุบัติเหตุร้ายแรง Solar ได้รับความเสียหายทางระบบประสาท ชีวิตของ Pobmek เปลี่ยนไปอย่างมากเมื่อเขาต้องสร้างสมดุลระหว่างบทบาทของคนรักและผู้ดูแล" },
             'watchLYT': { en: "Watch on: Viki & oneD app", th: "รับชมทาง: Viki และ oneD app" },
@@ -888,21 +873,9 @@
             'musicPerth': { en: "PERTH SOLO", th: "ผลงานเดี่ยวของ PERTH" },
             'descMusicPerth': { en: "Known for his raw vocals and impressive guitar skills, his solo tracks reflect a deeply personal side of his artistry.", th: "เป็นที่รู้จักจากเสียงร้องที่ดิบและทักษะกีตาร์ที่น่าประทับใจ เพลงเดี่ยวของเขาสะท้อนให้เห็นถึงความเป็นศิลปินในมุมที่ลึกซึ้ง" },
             'musicJasper': { en: "JASPER (T-POP GROUP)", th: "JASPER (ศิลปินกลุ่ม T-POP)" },
-            
-            // KULLANICI ÖZEL DÜZELTMESİ (JASPER)
-            'descMusicJasper': { 
-                en: "Discover the rhythmic and highly energetic tracks by <strong>Jasper</strong>, combining captivating beats with dynamic flair.", 
-                th: "ค้นพบเพลงจังหวะสนุกและเปี่ยมพลังของ <strong>Jasper</strong> ที่ผสานบีตชวนติดหูเข้ากับสไตล์ที่มีชีวิตชีวา" 
-            },
-            
+            'descMusicJasper': { en: "Discover the rhythmic and highly energetic tracks by <strong>Jasper</strong>, combining captivating beats with dynamic flair.", th: "ค้นพบเพลงจังหวะสนุกและเปี่ยมพลังของ <strong>Jasper</strong> ที่ผสานบีตชวนติดหูเข้ากับสไตล์ที่มีชีวิตชีวา" },
             'musicIndividual': { en: "INDIVIDUAL OSTs", th: "เพลงประกอบเดี่ยว" },
-            
-            // KULLANICI ÖZEL DÜZELTMESİ (INDIVIDUAL OSTS)
-            'descMusicIndividual': { 
-                en: "Relive the emotional highs of their individual acting careers through their original soundtracks.", 
-                th: "หวนย้อนสัมผัสช่วงเวลาทางอารมณ์อันเข้มข้นจากเส้นทางการแสดงของพวกเขาผ่านเพลงประกอบของแต่ละคน" 
-            },
-            
+            'descMusicIndividual': { en: "Relive the emotional highs of their individual acting careers through their original soundtracks.", th: "หวนย้อนสัมผัสช่วงเวลาทางอารมณ์อันเข้มข้นจากเส้นทางการแสดงของพวกเขาผ่านเพลงประกอบของแต่ละคน" },
             'trackPerth': { en: "Perth Tracks:", th: "เพลงของ Perth:" },
             'trackSanta': { en: "Santa Tracks:", th: "เพลงของ Santa:" },
             'titleInterviews': { en: "EXCLUSIVE INTERVIEWS", th: "บทสัมภาษณ์สุดพิเศษ" },
@@ -952,7 +925,6 @@
             'btnDelete': { en: "🗑️ Delete", th: "🗑️ ลบ" }
         };
 
-        // LANGUAGE TOGGLE FUNCTION
         window.currentLang = 'en';
         window.setLanguage = function(lang) {
             window.currentLang = lang;
@@ -974,14 +946,10 @@
                 }
             });
 
-            // Yeniden oluşturulması gereken alanlar
             if(window.allCommunityPosts.length > 0) window.renderFeeds();
             buildScheduleGrid();
         }
 
-        // ==========================================
-        // YENİ NESİL SAYFA DEĞİŞTİRİCİ (SPA)
-        // ==========================================
         window.showView = function(viewId, hash = null) {
             document.querySelectorAll('.page-view').forEach(view => {
                 view.style.display = 'none';
@@ -1025,13 +993,9 @@
             window.renderFeeds();
         }
 
-        // ==========================================
-        // SCHEDULE (TAKVİM) MANTIĞI - SADECE MAYIS VE SONRASI
-        // ==========================================
         const schedGrid = document.getElementById('scheduleGrid');
         function buildScheduleGrid() {
             schedGrid.innerHTML = '';
-            // i = 4 (Mayıs) ile başlar, i = 11 (Aralık) ile biter.
             for(let i = 4; i < 12; i++) {
                 const monthName = window.currentLang === 'th' ? monthsTh[i] : monthsEn[i];
                 schedGrid.innerHTML += `
@@ -1042,10 +1006,9 @@
                 `;
             }
         }
-        buildScheduleGrid(); // İlk sayfa yüklenmesinde gridi kur
+        buildScheduleGrid(); 
 
         onSnapshot(query(collection(db, "schedule"), orderBy("date", "asc")), (snap) => {
-            // Önce listeleri temizle (Sadece Mayıs ve sonrasını)
             for(let i = 4; i < 12; i++) {
                 const list = document.getElementById(`eventsList-${i}`);
                 if(list) list.innerHTML = '';
@@ -1055,18 +1018,16 @@
                 const data = docSnap.data();
                 if(!data.date) return;
                 
-                // Tarihi alıp ayı bulma işlemi
                 const dateObj = new Date(data.date + 'T12:00:00'); 
                 const monthIndex = dateObj.getMonth();
                 const day = dateObj.getDate();
                 const year = dateObj.getFullYear();
                 
-                if (year !== 2026) return; // Sadece 2026
+                if (year !== 2026) return; 
 
                 const monthName = window.currentLang === 'th' ? monthsTh[monthIndex] : monthsEn[monthIndex];
                 const listEl = document.getElementById(`eventsList-${monthIndex}`);
                 
-                // listEl sadece i=4 ve yukarısı için var, o yüzden öncesi görünmeyecek
                 if(listEl) {
                     let tagsHTML = '';
                     if(data.tags && data.tags.trim() !== '') {
@@ -1084,7 +1045,6 @@
             });
         });
 
-        // Admin Schedule Ekleme Formu
         document.getElementById('scheduleForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = e.target.querySelector('button');
@@ -1111,10 +1071,6 @@
             setTimeout(() => msg.innerText = "", 3000);
         });
 
-
-        // ==========================================
-        // NEFRET SÖYLEMİ (ANTI-HATE) FİLTRESİ 
-        // ==========================================
         const bannedWords = [
             "bitch", "fuck", "shit", "ugly", "stupid", "hate", "trash", "die", "kill", 
             "ass", "asshole", "dick", "cunt", "slut", "whore", 
@@ -1128,9 +1084,6 @@
             return regex.test(text);
         }
 
-        // ==========================================
-        // AKILLI FORM MANTIĞI (SMART FORM)
-        // ==========================================
         const postCat = document.getElementById('postCategory');
         const postVibe = document.getElementById('postVibe');
         const postLink = document.getElementById('postLink');
@@ -1177,10 +1130,6 @@
             }
         });
 
-
-        // ==========================================
-        // POST İŞLEMLERİ (PAYLAŞMA, DÜZENLEME, SİLME)
-        // ==========================================
         window.changePage = function(delta) {
             window.currentPage += delta;
             window.renderFeeds();
@@ -1320,7 +1269,9 @@
             }
 
             let controlsHTML = '';
-            const isOwner = (window.currentUsername !== "" && window.currentUsername === post.author) || 
+            // ADMIN YETKİSİ KONTROLÜ
+            const isAdmin = auth.currentUser && auth.currentUser.email === ADMIN_EMAIL;
+            const isOwner = isAdmin || (window.currentUsername !== "" && window.currentUsername === post.author) || 
                             (auth.currentUser && auth.currentUser.email.split('@')[0] === post.author);
             
             if (isOwner) {
@@ -1433,7 +1384,6 @@
             }
         }
 
-        // -- MODAL & AUTH KONTROLLERİ --
         window.openAuth = function(mode) {
             window.currentAuthMode = mode;
             const signTxt = window.currentLang === 'th' ? 'สมัครสมาชิก' : 'Sign Up';
@@ -1525,7 +1475,6 @@
             }
         });
 
-        // Kullanıcı adını ekrana yansıtma ve Admin Kontrolü
         onAuthStateChanged(auth, async (user) => {
             submitBtn.disabled = false;
             
@@ -1547,7 +1496,7 @@
 
                 document.getElementById('userEmailDisplay').innerText = "@" + window.currentUsername; 
                 
-                // ADMIN KONTROLÜ
+                // ADMIN YETKİ KONTROLÜ - Sadece laylayleeepsuniverse@gmail.com Schedule formunu görebilir.
                 if(user.email === ADMIN_EMAIL) {
                     document.getElementById('adminSchedulePanel').style.display = 'block';
                 }
@@ -1630,7 +1579,6 @@
             }
         });
 
-        // -- CANLI POST AKIŞI --
         const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
 
         onSnapshot(q, (snapshot) => {
