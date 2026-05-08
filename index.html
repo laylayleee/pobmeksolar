@@ -27,7 +27,7 @@
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap'); /* Thai Font */
 
         :root {
             --bg-color: #050002;
@@ -112,7 +112,7 @@
 
         /* SPA Views */
         .page-view { display: none; animation: fadeIn 0.4s ease-out; }
-        #homePageView { display: block; } /* Varsayılan olarak ana sayfa görünür */
+        #homePageView { display: block; } 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
         /* 1. Hero Section */
@@ -142,7 +142,7 @@
         .profile-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 15px; }
         .the-duo { grid-column: 1 / -1; background: linear-gradient(135deg, rgba(30,0,5,0.8), rgba(60,0,15,0.6)); padding: 40px; margin-top: 20px; }
         
-        /* 3. Official Content Cards (3 Cards) */
+        /* 3. Official Content Cards */
         .official-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px; }
         .card { padding: 40px 30px; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .card:hover { border-color: var(--accent-red); transform: translateY(-4px); }
@@ -184,20 +184,20 @@
         .full-width-card { grid-column: 1 / -1; }
         .ost-split { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
 
-        /* SCHEDULE & CALENDAR */
-        .schedule-header { text-align: center; margin-bottom: 50px; }
-        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-bottom: 60px; }
-        .month-box { padding: 25px 20px; background: rgba(15, 0, 5, 0.6); border-top: 4px solid var(--accent-red); display: flex; flex-direction: column; }
-        .month-name { font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-main); margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; }
-        .events-list { flex-grow: 1; display: flex; flex-direction: column; gap: 15px; }
-        .event-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 12px 15px; border-radius: 8px; border-left: 3px solid var(--accent-red); }
-        .event-date { font-weight: bold; font-size: 0.85rem; color: #aaa; display: block; margin-bottom: 4px; }
-        .event-title { font-weight: bold; color: white; display: block; font-size: 1.05rem; margin-bottom: 6px; line-height: 1.4; }
-        .event-tags { font-size: 0.8rem; color: #ff6680; font-style: italic; display: block; }
+        /* SCHEDULE COMPACT DESIGN */
+        .schedule-header { text-align: center; margin-bottom: 30px; }
+        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; margin-bottom: 60px; }
+        .month-box { padding: 15px; background: rgba(15, 0, 5, 0.6); border-top: 4px solid var(--accent-red); display: flex; flex-direction: column; }
+        .month-name { font-family: var(--font-serif); font-size: 1.2rem; color: var(--text-main); margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; }
+        .events-list { flex-grow: 1; display: flex; flex-direction: column; gap: 10px; }
+        .event-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 8px 10px; border-radius: 6px; border-left: 2px solid var(--accent-red); }
+        .event-date { font-weight: bold; font-size: 0.75rem; color: #aaa; display: block; margin-bottom: 2px; }
+        .event-title { font-weight: bold; color: white; display: block; font-size: 0.9rem; margin-bottom: 4px; line-height: 1.3; }
+        .event-tags { font-size: 0.7rem; color: #ff6680; font-style: italic; display: block; }
         
-        #adminSchedulePanel { display: none; margin-top: 40px; margin-bottom: 60px; padding: 40px; border: 1px dashed var(--accent-red); background: rgba(20,0,5,0.8); }
+        #adminSchedulePanel { display: none; margin-top: 40px; margin-bottom: 60px; padding: 30px; border: 1px dashed var(--accent-red); background: rgba(20,0,5,0.8); }
 
-        /* 6. Community Section */
+        /* Community Section */
         .community-area { padding: 60px 50px; margin-bottom: 100px; }
         .community-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 40px; }
         .community-card { padding: 40px 25px; text-align: center; display: flex; flex-direction: column; align-items: center; background: rgba(10,0,5,0.5); }
@@ -206,7 +206,7 @@
         .community-card h3 { color: var(--text-main); margin-bottom: 15px; font-size: 1.2rem; letter-spacing: 2px; }
         .community-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; flex-grow: 1; line-height: 1.6; }
         
-        /* Dinamik Akış Kartları */
+        /* Feed Cards */
         .feed-container { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
         .feed-card { padding: 25px 30px; display: flex; flex-direction: column; gap: 12px; background: rgba(10,0,5,0.6); }
         .feed-card:hover { border-color: rgba(255,255,255,0.3); background: rgba(20,0,10,0.8); }
@@ -217,15 +217,14 @@
         .feed-title { color: white; font-size: 1.4rem; letter-spacing: 1px; font-family: var(--font-serif); margin-top: 5px; }
         .feed-desc { color: #c4c4c4; font-size: 0.95rem; line-height: 1.6; }
 
-        /* Arşivdeki Kartların Yazılarını Kısaltan CSS */
+        /* Truncate for Archives */
         .truncate-text { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
         
-        /* Etkileşim Butonları */
         .interaction-bar { display: flex; gap: 10px; margin-top: 15px; align-items: center; flex-wrap: wrap; }
         .share-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
         .share-btn:hover { background: white; color: black; transform: scale(1.05); }
 
-        /* ARŞİV SAYFASI TASARIMI */
+        /* ARCHIVE PAGE */
         .archive-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 40px; }
         .archive-title { font-size: 3rem; color: white; font-family: var(--font-serif); text-transform: uppercase; letter-spacing: 2px; }
         .archive-subtitle { color: var(--text-muted); font-size: 1.1rem; }
@@ -243,24 +242,20 @@
         .footer-links { display: flex; gap: 30px; font-size: 0.9rem; color: var(--text-muted); font-weight: bold; letter-spacing: 1px; }
         .footer-links a:hover { color: white; cursor: pointer; }
 
-        /* Modallar */
+        /* Modals */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px); }
         .modal-content { background-color: #0a0005; margin: 10vh auto; padding: 40px; border: 1px solid rgba(255,255,255,0.2); border-top: 1px solid rgba(255,255,255,0.4); width: 90%; max-width: 500px; border-radius: 12px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.8); max-height: 80vh; overflow-y: auto; }
         .modal-content::-webkit-scrollbar { width: 8px; }
         .modal-content::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 4px; }
         .modal-content::-webkit-scrollbar-thumb { background: rgba(255,0,51,0.5); border-radius: 4px; }
-
         .close-btn { color: var(--text-muted); position: absolute; top: 15px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; transition: color 0.3s ease; z-index: 10; }
         .close-btn:hover { color: white; }
         .modal-content h2 { color: white; margin-bottom: 25px; font-size: 1.8rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; text-align: center; }
-        
         .auth-input, .post-input { width: 100%; padding: 14px; margin-bottom: 15px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 8px; font-family: var(--font-sans); transition: all 0.3s ease; }
         .auth-input:focus, .post-input:focus { outline: none; border-color: var(--accent-red); background: rgba(20,0,5,0.8); box-shadow: 0 0 10px rgba(255,0,51,0.2); }
         select.post-input option { background: #0a0005; color: white; }
-        
-        #authError, #postMessage, #editPostMessage { font-size: 0.85rem; text-align: center; margin-bottom: 10px; min-height: 20px; font-weight: bold; }
+        #authError, #postMessage, #editPostMessage { font-size: 0.85rem; text-align: center; margin-bottom: 10px; min-height: 20px; font-weight: bold; color: #4caf50; }
         #authError { color: var(--accent-red); }
-        #postMessage, #editPostMessage { color: #4caf50; }
 
         /* Mobil Optimizasyon */
         @media (max-width: 768px) {
@@ -593,6 +588,7 @@
         <div class="schedule-header">
             <h1 data-lang="scheduleTitle" style="font-family: var(--font-serif); font-size: 3rem; color: white;">2026 EVENT SCHEDULE</h1>
             <p data-lang="scheduleSub" style="color: var(--text-muted); font-size: 1.1rem; margin-top: 10px;">Stay updated with Perth and Santa's official activities.</p>
+            <p data-lang="scheduleOpened" style="color: var(--accent-red); font-size: 0.85rem; font-style: italic; margin-top: 5px;">* This page was launched on May 4th.</p>
         </div>
 
         <div id="scheduleGrid" class="schedule-grid">
@@ -641,6 +637,7 @@
         </div>
 
     </main>
+
 
     <div class="container">
         <footer style="margin-top: 50px; display: flex; flex-direction: column; align-items: center; gap: 30px; background: #020000; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.1);">
@@ -849,6 +846,7 @@
             'btnConcert': { en: "COMING SOON", th: "เร็วๆ นี้" },
             'scheduleTitle': { en: "2026 EVENT SCHEDULE", th: "ตารางกิจกรรมปี 2026" },
             'scheduleSub': { en: "Stay updated with Perth and Santa's official activities.", th: "ติดตามกิจกรรมอย่างเป็นทางการของ Perth และ Santa" },
+            'scheduleOpened': { en: "* This page was launched on May 4th.", th: "* หน้านี้เปิดตัวเมื่อวันที่ 4 พฤษภาคม" },
             'adminTitle': { en: "ADMIN: ADD NEW EVENT", th: "ผู้ดูแลระบบ: เพิ่มกิจกรรมใหม่" },
             'btnAddSchedule': { en: "ADD TO SCHEDULE", th: "เพิ่มในตาราง" },
 
@@ -872,7 +870,13 @@
             'cardInterviewsSub': { en: "Watch their exclusive interviews, variety shows, and promotional content.", th: "รับชมบทสัมภาษณ์สุดพิเศษ รายการวาไรตี้ และเนื้อหาโปรโมตของพวกเขา" },
             'btnWatchNow': { en: "WATCH NOW &rarr;", th: "ชมเลย &rarr;" },
             'titleSeriesHub': { en: "PERTHSANTA SERIES", th: "ซีรีส์ของ PERTHSANTA" },
-            'descP10L': { en: "The series explores the intricate dynamics of university life, following six students and three couples. It highlights the deep, protective bonds formed within the prestigious 'Perfect 10' engineering lineage, bringing Perth and Santa's dynamic chemistry to the forefront.", th: "ซีรีส์เรื่องนี้ถ่ายทอดความซับซ้อนของชีวิตมหาวิทยาลัย ผ่านเรื่องราวของนักศึกษา 6 คนและ 3 คู่รัก โดยเน้นสายสัมพันธ์อันแน่นแฟ้นที่ก่อตัวขึ้นภายในสายวิศวกรรมชื่อดัง “Perfect 10” พร้อมนำเสนอเคมีของ Perth และ Santa ได้อย่างลงตัว" },
+            
+            // KULLANICI ÖZEL DÜZELTMESİ (P10L)
+            'descP10L': { 
+                en: "The series explores the intricate dynamics of university life, following six students and three couples. It highlights the deep, protective bonds formed within the prestigious 'Perfect 10' engineering lineage, bringing Perth and Santa's dynamic chemistry to the forefront.", 
+                th: "ซีรีส์เรื่องนี้ถ่ายทอดความซับซ้อนของชีวิตมหาวิทยาลัย ผ่านเรื่องราวของนักศึกษา 6 คนและ 3 คู่รัก โดยเน้นสายสัมพันธ์อันแน่นแฟ้นที่ก่อตัวขึ้นภายในสายวิศวกรรมชื่อดัง “Perfect 10” พร้อมนำเสนอเคมีของ Perth และ Santa ได้อย่างลงตัว" 
+            },
+            
             'watchP10L': { en: "Watch on: GMMTV YouTube Channel", th: "รับชมทาง: GMMTV YouTube Channel" },
             'descLYT': { en: "A deeply emotional and mature narrative. After a serious accident, Solar suffers neurological damage. Pobmek's life changes dramatically as he is forced to balance the roles of a fiercely loving partner and a dedicated caregiver, pushing the boundaries of their acting skills.", th: "เรื่องราวที่เต็มไปด้วยอารมณ์ หลังจากอุบัติเหตุร้ายแรง Solar ได้รับความเสียหายทางระบบประสาท ชีวิตของ Pobmek เปลี่ยนไปอย่างมากเมื่อเขาต้องสร้างสมดุลระหว่างบทบาทของคนรักและผู้ดูแล" },
             'watchLYT': { en: "Watch on: Viki & oneD app", th: "รับชมทาง: Viki และ oneD app" },
@@ -884,9 +888,21 @@
             'musicPerth': { en: "PERTH SOLO", th: "ผลงานเดี่ยวของ PERTH" },
             'descMusicPerth': { en: "Known for his raw vocals and impressive guitar skills, his solo tracks reflect a deeply personal side of his artistry.", th: "เป็นที่รู้จักจากเสียงร้องที่ดิบและทักษะกีตาร์ที่น่าประทับใจ เพลงเดี่ยวของเขาสะท้อนให้เห็นถึงความเป็นศิลปินในมุมที่ลึกซึ้ง" },
             'musicJasper': { en: "JASPER (T-POP GROUP)", th: "JASPER (ศิลปินกลุ่ม T-POP)" },
-            'descMusicJasper': { en: "Discover the rhythmic and highly energetic tracks by <strong>Jasper</strong>, combining captivating beats with dynamic flair.", th: "ค้นพบเพลงจังหวะสนุกและเปี่ยมพลังของ <strong>Jasper</strong> ที่ผสานบีตชวนติดหูเข้ากับสไตล์ที่มีชีวิตชีวา" },
+            
+            // KULLANICI ÖZEL DÜZELTMESİ (JASPER)
+            'descMusicJasper': { 
+                en: "Discover the rhythmic and highly energetic tracks by <strong>Jasper</strong>, combining captivating beats with dynamic flair.", 
+                th: "ค้นพบเพลงจังหวะสนุกและเปี่ยมพลังของ <strong>Jasper</strong> ที่ผสานบีตชวนติดหูเข้ากับสไตล์ที่มีชีวิตชีวา" 
+            },
+            
             'musicIndividual': { en: "INDIVIDUAL OSTs", th: "เพลงประกอบเดี่ยว" },
-            'descMusicIndividual': { en: "Relive the emotional highs of their individual acting careers through their original soundtracks.", th: "หวนย้อนสัมผัสช่วงเวลาทางอารมณ์อันเข้มข้นจากเส้นทางการแสดงของพวกเขาผ่านเพลงประกอบของแต่ละคน" },
+            
+            // KULLANICI ÖZEL DÜZELTMESİ (INDIVIDUAL OSTS)
+            'descMusicIndividual': { 
+                en: "Relive the emotional highs of their individual acting careers through their original soundtracks.", 
+                th: "หวนย้อนสัมผัสช่วงเวลาทางอารมณ์อันเข้มข้นจากเส้นทางการแสดงของพวกเขาผ่านเพลงประกอบของแต่ละคน" 
+            },
+            
             'trackPerth': { en: "Perth Tracks:", th: "เพลงของ Perth:" },
             'trackSanta': { en: "Santa Tracks:", th: "เพลงของ Santa:" },
             'titleInterviews': { en: "EXCLUSIVE INTERVIEWS", th: "บทสัมภาษณ์สุดพิเศษ" },
@@ -1010,12 +1026,13 @@
         }
 
         // ==========================================
-        // SCHEDULE (TAKVİM) MANTIĞI
+        // SCHEDULE (TAKVİM) MANTIĞI - SADECE MAYIS VE SONRASI
         // ==========================================
         const schedGrid = document.getElementById('scheduleGrid');
         function buildScheduleGrid() {
             schedGrid.innerHTML = '';
-            for(let i = 0; i < 12; i++) {
+            // i = 4 (Mayıs) ile başlar, i = 11 (Aralık) ile biter.
+            for(let i = 4; i < 12; i++) {
                 const monthName = window.currentLang === 'th' ? monthsTh[i] : monthsEn[i];
                 schedGrid.innerHTML += `
                     <div class="glass-card month-box" id="monthBox-${i}">
@@ -1028,8 +1045,8 @@
         buildScheduleGrid(); // İlk sayfa yüklenmesinde gridi kur
 
         onSnapshot(query(collection(db, "schedule"), orderBy("date", "asc")), (snap) => {
-            // Önce listeleri temizle
-            for(let i = 0; i < 12; i++) {
+            // Önce listeleri temizle (Sadece Mayıs ve sonrasını)
+            for(let i = 4; i < 12; i++) {
                 const list = document.getElementById(`eventsList-${i}`);
                 if(list) list.innerHTML = '';
             }
@@ -1049,6 +1066,7 @@
                 const monthName = window.currentLang === 'th' ? monthsTh[monthIndex] : monthsEn[monthIndex];
                 const listEl = document.getElementById(`eventsList-${monthIndex}`);
                 
+                // listEl sadece i=4 ve yukarısı için var, o yüzden öncesi görünmeyecek
                 if(listEl) {
                     let tagsHTML = '';
                     if(data.tags && data.tags.trim() !== '') {
