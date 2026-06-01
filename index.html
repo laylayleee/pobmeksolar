@@ -815,7 +815,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
-        import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, doc, updateDoc, deleteDoc, getDocs, where, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, doc, updateDoc, deleteDoc, getDocs, where, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
         window.currentArchiveCategory = "Fan Fiction";
         window.allCommunityPosts = [];
@@ -877,10 +877,10 @@
             'cardInterviewsSub': { en: "Watch their exclusive interviews, variety shows, and promotional content.", th: "รับชมบทสัมภาษณ์สุดพิเศษ รายการวาไรตี้ และเนื้อหาโปรโมตของพวกเขา" },
             'btnWatchNow': { en: "WATCH NOW &rarr;", th: "ชมเลย &rarr;" },
             'titleSeriesHub': { en: "PERTHSANTA SERIES", th: "ซีรีส์ของ PERTHSANTA" },
-            'descP10L': { en: "The series explores the intricate dynamics of university life, following six students and three couples. It highlights the deep, protective bonds formed within the prestigious 'Perfect 10' engineering lineage, bringing Perth and Santa's dynamic chemistry to the forefront.", th: "ซีรีส์เรื่องนี้ถ่ายทอดความซับซ้อนของชีวิตมหาวิทยาลัย ผ่านเรื่องราวของนักศึกษา 6 คนและ 3 คู่รัก โดยเน้นสายสัมพันธ์อันแน่นแฟ้นที่ก่อตัวขึ้นภายในสายวิศวกรรมชื่อดัง “Perfect 10” พร้อมนำเสนอเคมีของ Perth และ Santa ได้อย่างลงตัว" },
+            'descP10L': { en: "The series explores the intricate dynamics of university life, following six students and three couples. It highlights the deep, protective bonds formed within the prestigious 'Perfect 10' engineering lineage, bringing Perth and Santa's dynamic chemistry to the forefront.", th: "ซีรีส์เรื่องนี้ถ่ายทอดความซับซ้อนของชีวิตมหาวิทยาลัย ผ่านเรื่องราวของนักศึกษา 6 คนและ 3 คู่รัก โดยเน้นสายสัมพันธ์อันแน่นแฟ้นที่ก่อตัวขึ้นภายในสายรหัสวิศวะ 'Perfect 10' พร้อมนำเสนอเคมีของ Perth และ Santa ได้อย่างลงตัว" },
             'watchP10L': { en: "Watch on: GMMTV YouTube Channel", th: "รับชมทาง: GMMTV YouTube Channel" },
-            'descLYT': { en: "A deeply emotional and mature narrative. After a serious accident, Solar suffers neurological damage. Pobmek's life changes dramatically as he is forced to balance the roles of a fiercely loving partner and a dedicated caregiver, pushing the boundaries of their acting skills.", th: "เรื่องราวที่เต็มไปด้วยอารมณ์ หลังจากอุบัติเหตุร้ายแรง Solar ได้รับความเสียหายทางระบบประสาท ชีวิตของ Pobmek เปลี่ยนไปอย่างมากเมื่อเขาต้องสร้างสมดุลระหว่างบทบาทของคนรักและผู้ดูแล" },
-            'watchLYT': { en: "Watch on: Viki & oneD app", th: "รับชมทาง: Viki และ oneD app" },
+            'descLYT': { en: "A deeply emotional and mature narrative. After a serious accident, Solar suffers neurological damage. Pobmek's life changes dramatically as he is forced to balance the roles of a fiercely loving partner and a dedicated caregiver, pushing the boundaries of their acting skills.", th: "เรื่องราวที่เต็มไปด้วยอารมณ์และเติบโตขึ้น หลังจากอุบัติเหตุร้ายแรง Solar ได้รับความกระทบกระเทือนทางระบบประสาท ชีวิตของ Pobmek เปลี่ยนไปอย่างมากเมื่อเขาต้องสร้างสมดุลระหว่างบทบาทของคนรักที่แสนดีและผู้ดูแลที่ทุ่มเท" },
+            'watchLYT': { en: "Watch on: Viki & oneD app", th: "รับชมทาง: Viki และแอป oneD" },
             'badgeComingSoon': { en: "COMING SOON", th: "เร็วๆ นี้" },
             'descSLT': { en: "Prepare for the highly anticipated upcoming project that expands the PerthSanta universe.", th: "เตรียมพบกับโปรเจกต์ใหม่ที่ขยายจักรวาล PerthSanta ที่กำลังจะมาถึง" },
             'watchSLT': { en: "In Production", th: "กำลังถ่ายทำ" },
@@ -1075,7 +1075,7 @@
             });
         }
 
-        onSnapshot(collection(db, "media"), (snap) => {
+        onSnapshot(query(collection(db, "media")), (snap) => {
             window.dynamicMediaLinks = [];
             snap.forEach(docSnap => {
                 const data = docSnap.data();
@@ -1218,13 +1218,17 @@
             });
         }
 
-        onSnapshot(query(collection(db, "schedule"), orderBy("date", "asc")), (snap) => {
+        // Safe Schedule Query
+        const schedQ = query(collection(db, "schedule"));
+        onSnapshot(schedQ, (snap) => {
             window.allScheduleEvents = [];
             snap.forEach(docSnap => {
                 const data = docSnap.data();
                 data.id = docSnap.id;
                 window.allScheduleEvents.push(data);
             });
+            // Yerel olarak tarihe göre dizme
+            window.allScheduleEvents.sort((a, b) => new Date(a.date || 0) - new Date(b.date || 0));
             window.renderSchedule();
         });
 
@@ -1384,9 +1388,18 @@
             document.getElementById('rmCategoryDiv').innerHTML = `<span class="feed-category" style="background: ${badgeColor};">${post.category}</span> ${vibeHTML}`;
             document.getElementById('rmTitle').innerText = post.title;
             
-            let dateStr = "Just now";
-            if(post.createdAt && typeof post.createdAt.toDate === 'function') {
-                dateStr = post.createdAt.toDate().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            let dateStr = "Past";
+            if(post.createdAt) {
+                try {
+                    if(typeof post.createdAt.toDate === 'function') dateStr = post.createdAt.toDate().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                    else if(post.createdAt.seconds) dateStr = new Date(post.createdAt.seconds * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                    else {
+                        const d = new Date(post.createdAt);
+                        if(!isNaN(d)) dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                    }
+                } catch(e) {
+                    console.error("Date error:", e);
+                }
             }
             document.getElementById('rmAuthor').innerText = `by @${post.author} • ${dateStr}`;
             document.getElementById('rmDesc').innerText = post.description;
@@ -1413,14 +1426,21 @@
             if (post.category === "Fan Game") badgeColor = "#0066cc";
             if (post.category === "Discussion") badgeColor = "#ff9900";
 
-            let dateStr = "Just now";
-            if(post.createdAt && typeof post.createdAt.toDate === 'function') {
-                const d = post.createdAt.toDate();
-                dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            let dateStr = "Past";
+            if (post.createdAt) {
+                try {
+                    if(typeof post.createdAt.toDate === 'function') dateStr = post.createdAt.toDate().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                    else if(post.createdAt.seconds) dateStr = new Date(post.createdAt.seconds * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                    else {
+                        const d = new Date(post.createdAt);
+                        if(!isNaN(d)) dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                    }
+                } catch(e) {
+                    console.error("Date error:", e);
+                }
             }
 
             let controlsHTML = '';
-            // TOPLULUK POSTLARINI SADECE PAYLAŞAN DÜZENLEYEBİLİR/SİLEBİLİR.
             const isOwner = (window.currentUsername !== "" && window.currentUsername === post.author) || 
                             (auth.currentUser && auth.currentUser.email.split('@')[0] === post.author);
             
@@ -1726,25 +1746,59 @@
             }
         });
 
-        // FIXED POST QUERY SO OLD POSTS WITH MISSING DATES DON'T DISAPPEAR
-        const postsQ = collection(db, "posts"); // Removed orderBy("createdAt") limitation
+        // ---------------------------------------------------------
+        // CRITICAL FIX: SAFE QUERY FOR POSTS WITHOUT DROPPING DATA
+        // ---------------------------------------------------------
+        const postsQ = query(collection(db, "posts"));
         onSnapshot(postsQ, (snapshot) => {
             window.allCommunityPosts = [];
+            
             snapshot.forEach((docSnap) => {
                 const post = docSnap.data();
                 post.id = docSnap.id; 
-                if(!post.title) return;
+                
+                // Fallbacks in case old posts have missing or miscapitalized fields
+                post.title = post.title || post.Title || "Untitled";
+                post.description = post.description || post.Description || "";
+                post.author = post.author || post.Author || "Anonymous";
+                
+                let rawCat = post.category || post.Category || "Discussion";
+                // Standardize category names so they match the filter strictly
+                if (rawCat === "Fanfiction" || rawCat.toLowerCase() === "fan fiction") {
+                    post.category = "Fan Fiction";
+                } else if (rawCat === "Fangame" || rawCat.toLowerCase() === "fan game") {
+                    post.category = "Fan Game";
+                } else if (rawCat.toLowerCase() === "discussion") {
+                    post.category = "Discussion";
+                } else {
+                    post.category = rawCat;
+                }
+                
                 window.allCommunityPosts.push(post); 
             });
             
-            // LOCAL SORT ensures old data without "createdAt" isn't omitted by Firebase rules
+            // LOCAL SORTING (Safe for missing or weird date formats)
             window.allCommunityPosts.sort((a, b) => {
-                const t1 = (a.createdAt && typeof a.createdAt.toMillis === 'function') ? a.createdAt.toMillis() : 0;
-                const t2 = (b.createdAt && typeof b.createdAt.toMillis === 'function') ? b.createdAt.toMillis() : 0;
+                let t1 = 0; let t2 = 0;
+                
+                if (a.createdAt) {
+                    if (typeof a.createdAt.toMillis === 'function') t1 = a.createdAt.toMillis();
+                    else if (a.createdAt.seconds) t1 = a.createdAt.seconds * 1000;
+                    else t1 = new Date(a.createdAt).getTime() || 0;
+                }
+                
+                if (b.createdAt) {
+                    if (typeof b.createdAt.toMillis === 'function') t2 = b.createdAt.toMillis();
+                    else if (b.createdAt.seconds) t2 = b.createdAt.seconds * 1000;
+                    else t2 = new Date(b.createdAt).getTime() || 0;
+                }
+                
                 return t2 - t1;
             });
             
             window.renderFeeds();
+        }, (error) => {
+            console.error("Posts fetching error:", error);
         });
 
         window.openRandomFic = function() {
