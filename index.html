@@ -435,27 +435,42 @@
                 <div class="music-card full-width-card duo-card glass-card">
                     <div class="music-icon" style="text-align: center; font-size: 3rem;">🎤🎤</div>
                     <h3 style="text-align: center;" data-lang="musicDuo">DUO COLLABORATIONS & OST</h3>
-                    <div class="song-list" id="music-list-duo" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                        <!-- Dynamic content via JS -->
+                    
+                    <div class="song-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <a href="https://youtu.be/itsxy1gUIYY" target="_blank" class="yt-link"><span>▶</span> No One Else</a>
+                        <a href="https://youtu.be/trvsug_27vc" target="_blank" class="yt-link"><span>▶</span> Be With Me</a>
+                        <a href="https://youtu.be/-OwlECihP68" target="_blank" class="yt-link"><span>▶</span> Arak Arak</a>
                     </div>
+                    
+                    <div id="dynamic-music-duo" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;"></div>
                 </div>
 
                 <div class="music-card glass-card">
                     <div class="music-icon">🎸</div>
                     <h3 data-lang="musicPerth">PERTH SOLO</h3>
                     <p data-lang="descMusicPerth">Known for his raw vocals and impressive guitar skills, his solo tracks reflect a deeply personal side of his artistry.</p>
-                    <div class="song-list" id="music-list-perth">
-                        <!-- Dynamic content via JS -->
+                    
+                    <div class="song-list">
+                        <a href="https://youtu.be/fyx7IXtr6VE" target="_blank" class="yt-link"><span>▶</span> Secret</a>
+                        <a href="https://youtu.be/2O1uI8Inb5Q" target="_blank" class="yt-link"><span>▶</span> Numb</a>
                     </div>
+                    
+                    <div id="dynamic-music-perth" style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;"></div>
                 </div>
 
                 <div class="music-card glass-card">
                     <div class="music-icon">🎧</div>
                     <h3 data-lang="musicJasper">JASPER (T-POP GROUP)</h3>
                     <p data-lang="descMusicJasper">Discover the rhythmic and highly energetic tracks by <strong>Jasper</strong>, combining captivating beats with dynamic flair.</p>
-                    <div class="song-list" id="music-list-jasper">
-                        <!-- Dynamic content via JS -->
+                    
+                    <div class="song-list">
+                        <a href="https://youtu.be/pURfo4ey5y0" target="_blank" class="yt-link" style="border-color: var(--accent-red); box-shadow: 0 0 10px rgba(255,0,51,0.5);"><span>▶</span> LOVE SCENE (NEW MV!)</a>
+                        <a href="https://youtu.be/YpVjU4OJ4Ms" target="_blank" class="yt-link"><span>▶</span> Sadistic</a>
+                        <a href="https://youtu.be/KO78TDSp_bo" target="_blank" class="yt-link"><span>▶</span> Take It Off</a>
+                        <a href="https://youtu.be/qLb9ZfWBxIw" target="_blank" class="yt-link"><span>▶</span> Touch</a>
                     </div>
+                    
+                    <div id="dynamic-music-jasper" style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;"></div>
                 </div>
                 
                 <div class="music-card full-width-card glass-card" style="margin-top: 30px;">
@@ -466,21 +481,22 @@
                     <div class="ost-split">
                         <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
                             <h4 style="color: white; margin-bottom: 15px; font-size: 1.1rem;" data-lang="trackPerth">Perth Tracks:</h4>
-                            <div class="song-list" id="music-list-indiv-perth">
-                                <!-- Dynamic content via JS -->
-                            </div>
+                            
+                            <a href="https://youtu.be/PE1RN0rkau4" target="_blank" class="yt-link" style="width: 100%;"><span>▶</span> Written In Our Hearts</a>
+                            
+                            <div id="dynamic-music-indiv-perth" style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;"></div>
                         </div>
                         <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
                             <h4 style="color: white; margin-bottom: 15px; font-size: 1.1rem;" data-lang="trackSanta">Santa Tracks:</h4>
-                            <div class="song-list" id="music-list-indiv-santa">
-                                <!-- Dynamic content via JS -->
-                            </div>
+                            
+                            <a href="https://youtu.be/8e15jzG0Pao" target="_blank" class="yt-link" style="width: 100%;"><span>▶</span> My Sky</a>
+                            
+                            <div id="dynamic-music-indiv-santa" style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- ADMIN MUSIC PANEL -->
             <div id="adminMusicPanel" style="display:none; margin-top:40px; padding:20px; background: rgba(20,0,5,0.8); border: 1px dashed var(--accent-red); border-radius: 8px;">
                 <h3 style="color: var(--accent-red); margin-bottom:15px; font-size: 1.2rem;">ADMIN: ADD MUSIC LINK</h3>
                 <form id="addMusicForm" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
@@ -504,13 +520,20 @@
                 <div class="music-card full-width-card glass-card">
                     <div class="music-icon" style="text-align: center; font-size: 3rem;">📺</div>
                     <h3 style="text-align: center; margin-bottom: 30px;" data-lang="subtitleInterviews">LATEST SHOWS & INTERVIEWS</h3>
-                    <div class="song-list" id="interviews-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
-                        <!-- Dynamic content via JS -->
+                    
+                    <div class="song-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
+                        <a href="https://youtu.be/6N_23dWBKdg" target="_blank" class="yt-link"><span>▶</span> PERTHSANTA WITH MINT MAGAZINE 30 MAY 2025</a>
+                        <a href="https://youtu.be/-laTFjWzyWs" target="_blank" class="yt-link"><span>▶</span> PERTHSANTA WITH FEED 11 MARCH 2025</a>
+                        <a href="https://youtu.be/WLOUR34iV2A" target="_blank" class="yt-link"><span>▶</span> PERTHSANTA WITH THE STANDART POP 29 APRIL 2026</a>
+                        <a href="https://youtu.be/xWRTtDObS-Q" target="_blank" class="yt-link"><span>▶</span> PERTH ON BASED ON 2 STORIES 8 APRIL 2026</a>
+                        <a href="https://youtu.be/nR9MS2MmzC4" target="_blank" class="yt-link"><span>▶</span> LOVE YOU TEACHER CAST WITH FEED 22 MARCH 2026</a>
+                        <a href="https://youtu.be/mUWiNnEKJYs" target="_blank" class="yt-link"><span>▶</span> PERTHSANTA WITH FEED 5 APRIL 2026 (FOR LYT)</a>
                     </div>
+
+                    <div id="dynamic-interview-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 15px;"></div>
                 </div>
             </div>
 
-            <!-- ADMIN INTERVIEW PANEL -->
             <div id="adminInterviewPanel" style="display:none; margin-top:40px; padding:20px; background: rgba(20,0,5,0.8); border: 1px dashed var(--accent-red); border-radius: 8px;">
                 <h3 style="color: var(--accent-red); margin-bottom:15px; font-size: 1.2rem;">ADMIN: ADD INTERVIEW LINK</h3>
                 <form id="addInterviewForm" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
@@ -723,7 +746,6 @@
         </div>
     </div>
 
-    <!-- Edit Media Modal -->
     <div id="editMediaModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('editMediaModal')">&times;</span>
@@ -798,7 +820,7 @@
         window.currentArchiveCategory = "Fan Fiction";
         window.allCommunityPosts = [];
         window.allScheduleEvents = [];
-        window.allMediaLinks = [];
+        window.dynamicMediaLinks = [];
         window.currentAuthMode = 'login';
         window.currentEditPostId = null;
         window.currentEditScheduleId = null;
@@ -855,10 +877,10 @@
             'cardInterviewsSub': { en: "Watch their exclusive interviews, variety shows, and promotional content.", th: "รับชมบทสัมภาษณ์สุดพิเศษ รายการวาไรตี้ และเนื้อหาโปรโมตของพวกเขา" },
             'btnWatchNow': { en: "WATCH NOW &rarr;", th: "ชมเลย &rarr;" },
             'titleSeriesHub': { en: "PERTHSANTA SERIES", th: "ซีรีส์ของ PERTHSANTA" },
-            'descP10L': { en: "The series explores the intricate dynamics of university life, following six students and three couples. It highlights the deep, protective bonds formed within the prestigious 'Perfect 10' engineering lineage, bringing Perth and Santa's dynamic chemistry to the forefront.", th: "ซีรีส์เรื่องนี้ถ่ายทอดความซับซ้อนของชีวิตมหาวิทยาลัย ผ่านเรื่องราวของนักศึกษา 6 คนและ 3 คู่รัก โดยเน้นสายสัมพันธ์อันแน่นแฟ้นที่ก่อตัวขึ้นภายในสายรหัสวิศวะ 'Perfect 10' พร้อมนำเสนอเคมีของ Perth และ Santa ได้อย่างลงตัว" },
+            'descP10L': { en: "The series explores the intricate dynamics of university life, following six students and three couples. It highlights the deep, protective bonds formed within the prestigious 'Perfect 10' engineering lineage, bringing Perth and Santa's dynamic chemistry to the forefront.", th: "ซีรีส์เรื่องนี้ถ่ายทอดความซับซ้อนของชีวิตมหาวิทยาลัย ผ่านเรื่องราวของนักศึกษา 6 คนและ 3 คู่รัก โดยเน้นสายสัมพันธ์อันแน่นแฟ้นที่ก่อตัวขึ้นภายในสายวิศวกรรมชื่อดัง “Perfect 10” พร้อมนำเสนอเคมีของ Perth และ Santa ได้อย่างลงตัว" },
             'watchP10L': { en: "Watch on: GMMTV YouTube Channel", th: "รับชมทาง: GMMTV YouTube Channel" },
-            'descLYT': { en: "A deeply emotional and mature narrative. After a serious accident, Solar suffers neurological damage. Pobmek's life changes dramatically as he is forced to balance the roles of a fiercely loving partner and a dedicated caregiver, pushing the boundaries of their acting skills.", th: "เรื่องราวที่เต็มไปด้วยอารมณ์และเติบโตขึ้น หลังจากอุบัติเหตุร้ายแรง Solar ได้รับความกระทบกระเทือนทางระบบประสาท ชีวิตของ Pobmek เปลี่ยนไปอย่างมากเมื่อเขาต้องสร้างสมดุลระหว่างบทบาทของคนรักที่แสนดีและผู้ดูแลที่ทุ่มเท" },
-            'watchLYT': { en: "Watch on: Viki & oneD app", th: "รับชมทาง: Viki และแอป oneD" },
+            'descLYT': { en: "A deeply emotional and mature narrative. After a serious accident, Solar suffers neurological damage. Pobmek's life changes dramatically as he is forced to balance the roles of a fiercely loving partner and a dedicated caregiver, pushing the boundaries of their acting skills.", th: "เรื่องราวที่เต็มไปด้วยอารมณ์ หลังจากอุบัติเหตุร้ายแรง Solar ได้รับความเสียหายทางระบบประสาท ชีวิตของ Pobmek เปลี่ยนไปอย่างมากเมื่อเขาต้องสร้างสมดุลระหว่างบทบาทของคนรักและผู้ดูแล" },
+            'watchLYT': { en: "Watch on: Viki & oneD app", th: "รับชมทาง: Viki และ oneD app" },
             'badgeComingSoon': { en: "COMING SOON", th: "เร็วๆ นี้" },
             'descSLT': { en: "Prepare for the highly anticipated upcoming project that expands the PerthSanta universe.", th: "เตรียมพบกับโปรเจกต์ใหม่ที่ขยายจักรวาล PerthSanta ที่กำลังจะมาถึง" },
             'watchSLT': { en: "In Production", th: "กำลังถ่ายทำ" },
@@ -934,7 +956,7 @@
 
             if(window.allCommunityPosts.length > 0) window.renderFeeds();
             window.renderSchedule();
-            if(window.allMediaLinks.length > 0) window.renderMedia();
+            if(window.dynamicMediaLinks.length > 0) window.renderDynamicMedia();
         }
 
         window.showView = function(viewId, hash = null) {
@@ -1010,44 +1032,26 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // ==========================================
-        // MEDIA (MUSIC & INTERVIEW) ADMIN CONTROLS
-        // ==========================================
-        const defaultMedia = [
-            { section: 'music', category: 'duo', title: 'No One Else', url: 'https://youtu.be/itsxy1gUIYY' },
-            { section: 'music', category: 'duo', title: 'Be With Me', url: 'https://youtu.be/trvsug_27vc' },
-            { section: 'music', category: 'duo', title: 'Arak Arak', url: 'https://youtu.be/-OwlECihP68' },
-            { section: 'music', category: 'perth', title: 'Secret', url: 'https://youtu.be/fyx7IXtr6VE' },
-            { section: 'music', category: 'perth', title: 'Numb', url: 'https://youtu.be/2O1uI8Inb5Q' },
-            { section: 'music', category: 'jasper', title: 'LOVE SCENE (NEW MV!)', url: 'https://youtu.be/pURfo4ey5y0' },
-            { section: 'music', category: 'jasper', title: 'Sadistic', url: 'https://youtu.be/YpVjU4OJ4Ms' },
-            { section: 'music', category: 'jasper', title: 'Take It Off', url: 'https://youtu.be/KO78TDSp_bo' },
-            { section: 'music', category: 'jasper', title: 'Touch', url: 'https://youtu.be/qLb9ZfWBxIw' },
-            { section: 'music', category: 'indiv-perth', title: 'Written In Our Hearts', url: 'https://youtu.be/PE1RN0rkau4' },
-            { section: 'music', category: 'indiv-santa', title: 'My Sky', url: 'https://youtu.be/8e15jzG0Pao' },
-            { section: 'interview', category: 'interview', title: 'PERTHSANTA WITH MINT MAGAZINE 30 MAY 2025', url: 'https://youtu.be/6N_23dWBKdg' },
-            { section: 'interview', category: 'interview', title: 'PERTHSANTA WITH FEED 11 MARCH 2025', url: 'https://youtu.be/-laTFjWzyWs' },
-            { section: 'interview', category: 'interview', title: 'PERTHSANTA WITH THE STANDART POP 29 APRIL 2026', url: 'https://youtu.be/WLOUR34iV2A' },
-            { section: 'interview', category: 'interview', title: 'PERTH ON BASED ON 2 STORIES 8 APRIL 2026', url: 'https://youtu.be/xWRTtDObS-Q' },
-            { section: 'interview', category: 'interview', title: 'LOVE YOU TEACHER CAST WITH FEED 22 MARCH 2026', url: 'https://youtu.be/nR9MS2MmzC4' },
-            { section: 'interview', category: 'interview', title: 'PERTHSANTA WITH FEED 5 APRIL 2026 (FOR LYT)', url: 'https://youtu.be/mUWiNnEKJYs' }
-        ];
 
-        window.renderMedia = function() {
+        // ==========================================
+        // DYNAMIC MEDIA (MUSIC & INTERVIEW) ADMIN CONTROLS
+        // ==========================================
+        
+        window.renderDynamicMedia = function() {
             const containers = {
-                'duo': document.getElementById('music-list-duo'),
-                'perth': document.getElementById('music-list-perth'),
-                'jasper': document.getElementById('music-list-jasper'),
-                'indiv-perth': document.getElementById('music-list-indiv-perth'),
-                'indiv-santa': document.getElementById('music-list-indiv-santa'),
-                'interview': document.getElementById('interviews-list')
+                'duo': document.getElementById('dynamic-music-duo'),
+                'perth': document.getElementById('dynamic-music-perth'),
+                'jasper': document.getElementById('dynamic-music-jasper'),
+                'indiv-perth': document.getElementById('dynamic-music-indiv-perth'),
+                'indiv-santa': document.getElementById('dynamic-music-indiv-santa'),
+                'interview': document.getElementById('dynamic-interview-list')
             };
 
             for (let key in containers) {
                 if(containers[key]) containers[key].innerHTML = '';
             }
 
-            window.allMediaLinks.forEach(item => {
+            window.dynamicMediaLinks.forEach(item => {
                 const container = item.section === 'interview' ? containers['interview'] : containers[item.category];
                 if(container) {
                     let adminBtns = '';
@@ -1059,36 +1063,26 @@
                         </div>`;
                     }
                     
-                    const isGrid = container.id === 'music-list-duo' || container.id === 'interviews-list';
+                    const isGrid = container.id === 'dynamic-music-duo' || container.id === 'dynamic-interview-list';
                     const wrapperStyle = isGrid ? 'display:flex; align-items:center; width:100%;' : 'display:flex; align-items:center; width:100%; margin-bottom:5px;';
                     
-                    let extraLinkStyle = "";
-                    if(item.title.includes("NEW MV!")) extraLinkStyle = "border-color: var(--accent-red); box-shadow: 0 0 10px rgba(255,0,51,0.5);";
-
                     container.innerHTML += `
                     <div style="${wrapperStyle}">
-                        <a href="${item.url}" target="_blank" class="yt-link" style="flex:1; ${extraLinkStyle}"><span>▶</span> ${item.title}</a>
+                        <a href="${item.url}" target="_blank" class="yt-link" style="flex:1;"><span>▶</span> ${item.title}</a>
                         ${adminBtns}
                     </div>`;
                 }
             });
         }
 
-        onSnapshot(collection(db, "media"), async (snap) => {
-            if(snap.empty && !window.hasSeededMedia) {
-                window.hasSeededMedia = true;
-                for(let item of defaultMedia) {
-                    await addDoc(collection(db, "media"), { ...item, createdAt: serverTimestamp() });
-                }
-                return;
-            }
-            window.allMediaLinks = [];
+        onSnapshot(collection(db, "media"), (snap) => {
+            window.dynamicMediaLinks = [];
             snap.forEach(docSnap => {
                 const data = docSnap.data();
                 data.id = docSnap.id;
-                window.allMediaLinks.push(data);
+                window.dynamicMediaLinks.push(data);
             });
-            window.renderMedia();
+            window.renderDynamicMedia();
         });
 
         document.getElementById('addMusicForm').addEventListener('submit', async (e) => {
@@ -1120,14 +1114,14 @@
         });
 
         window.deleteMedia = async function(id) {
-            if(confirm("Are you sure you want to delete this link?")) {
+            if(confirm("Are you sure you want to delete this added link?")) {
                 try { await deleteDoc(doc(db, "media", id)); } 
                 catch(err) { alert("Error: " + err.message); }
             }
         }
 
         window.openEditMedia = function(id) {
-            const item = window.allMediaLinks.find(m => m.id === id);
+            const item = window.dynamicMediaLinks.find(m => m.id === id);
             if(!item) return;
             window.currentEditMediaId = id;
             document.getElementById('editMediaTitle').value = item.title;
@@ -1670,7 +1664,7 @@
 
             if(window.allCommunityPosts.length > 0) window.renderFeeds();
             window.renderSchedule();
-            if(window.allMediaLinks.length > 0) window.renderMedia();
+            if(window.dynamicMediaLinks.length > 0) window.renderDynamicMedia();
         });
 
         window.logoutUser = function() {
@@ -1732,8 +1726,8 @@
             }
         });
 
-        // Bypassing native orderBy which fails if createdAt is absent in older docs. Local sorting instead.
-        const postsQ = query(collection(db, "posts"));
+        // FIXED POST QUERY SO OLD POSTS WITH MISSING DATES DON'T DISAPPEAR
+        const postsQ = collection(db, "posts"); // Removed orderBy("createdAt") limitation
         onSnapshot(postsQ, (snapshot) => {
             window.allCommunityPosts = [];
             snapshot.forEach((docSnap) => {
@@ -1743,9 +1737,10 @@
                 window.allCommunityPosts.push(post); 
             });
             
+            // LOCAL SORT ensures old data without "createdAt" isn't omitted by Firebase rules
             window.allCommunityPosts.sort((a, b) => {
-                const t1 = a.createdAt ? (typeof a.createdAt.toMillis === 'function' ? a.createdAt.toMillis() : 0) : 0;
-                const t2 = b.createdAt ? (typeof b.createdAt.toMillis === 'function' ? b.createdAt.toMillis() : 0) : 0;
+                const t1 = (a.createdAt && typeof a.createdAt.toMillis === 'function') ? a.createdAt.toMillis() : 0;
+                const t2 = (b.createdAt && typeof b.createdAt.toMillis === 'function') ? b.createdAt.toMillis() : 0;
                 return t2 - t1;
             });
             
