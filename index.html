@@ -870,7 +870,7 @@
             'btnUpdateEvent': { en: "UPDATE EVENT", th: "อัปเดตกิจกรรม" },
             'aboutTitle': { en: "WHO IS PERTHSANTA?", th: "PERTHSANTA คือใคร?" },
             'aboutP1': { en: "Two distinct paths, one powerful universe. Perth Tanapon and Santa Pongsapak form one of the most dynamic and fiercely talented duos in the Thai entertainment industry.", th: "สองเส้นทางที่แตกต่างสู่หนึ่งจักรวาลที่ทรงพลัง Perth Tanapon และ Santa Pongsapak คือหนึ่งในคู่หูที่มีความสามารถและโดดเด่นที่สุดในวงการบันเทิงไทย" },
-            'aboutP2': { en: "Individually, they have proven themselves as versatile artists. Together, their magnetic on-screen chemistry and shared passion for storytelling have created an unstoppable force.", th: "ในฐานะศิลปินเดี่ยว พวกเขาได้พิสูจน์ตัวเองแล้วว่าเป็นศิลปินที่เก่งกาจ และเมื่อรวมกัน เคมีบนหน้าจอที่ดึงดูดใจของพวกเขาได้สร้างพลังที่ไม่อาจต้านทานได้" },
+            'aboutP2': { en: "Individually, they have proven themselves as versatile artists. Together, their magnetic on-screen chemistry and shared passion for storytelling have created an unstoppable force.", th: "ในฐานะศิลปินเดี่ยว พวกเขาได้พิสูจน์ตัวเองแล้วว่าเป็นศิลปินที่เก่งกาจ และเมื่อรวมกัน เคมีบนหน้าจอที่ดึงดูดใจของพวกเขาได้สร้างพลังที่ไม่อาجต้านทานได้" },
             'bioPerth': { en: "Stepping into the spotlight around 2017, Perth quickly rose to international fame. Known for his ability to convey deep, complex emotions, he is a multi-talented artist, gifted musician, singer, and guitarist. He is currently gearing up for his highly anticipated solo projects, <strong>Scarlet Heart</strong> and <strong>High & Low</strong>.", th: "เริ่มเข้าสู่วงการในปี 2017 Perth โด่งดังระดับนานาชาติอย่างรวดเร็ว เป็นที่รู้จักจากความสามารถในการถ่ายทอดอารมณ์ที่ลึกซึ้ง เขาเป็นศิลปินที่มีความสามารถหลากหลาย เป็นทั้งนักดนตรี นักร้อง และมือกีตาร์ ปัจจุบันเขากำลังเตรียมพร้อมสำหรับโปรเจกต์เดี่ยวที่หลายคนรอคอย <strong>Scarlet Heart</strong> และ <strong>High & Low</strong>" },
             'bioSanta': { en: "Santa burst onto the scene capturing hearts with his phenomenal dance skills and highly expressive acting. Known for his incredible versatility and natural ability to bring deep emotional resonance to his characters, he truly lights up the screen with every performance. Beyond his outstanding acting prowess, he is also a talented performer and a proud member of the beloved T-Pop group <strong>Jasper</strong>.", th: "Santa ปรากฏตัวและขโมยหัวใจด้วยทักษะการเต้นที่ยอดเยี่ยมและการแสดงที่สื่ออารมณ์ ด้วยความสามารถในการนำอารมณ์ที่ลึกซึ้งมาสู่ตัวละคร นอกเหนือจากความสามารถด้านการแสดงแล้ว เขายังเป็นนักแสดงที่มีพรสวรรค์และเป็นสมาชิกของวง T-Pop ชื่อดัง <strong>Jasper</strong>" },
             'bioDomiia': { en: "A little red-haired rocker demon who comes in a cool black suit with black and white wings. As the representative of PerthSanta's fan club, Domiia is ready to bring happiness to everyone.", th: "ปีศาจร็อกเกอร์ผมแดงตัวน้อยในชุดสูทสีดำสุดเท่พร้อมปีกสีขาวดำ ในฐานะตัวแทนแฟนคลับของ PerthSanta Domiia พร้อมที่จะมอบความสุขให้กับทุกคน" },
@@ -1032,7 +1032,7 @@
         }
 
         // ==========================================
-        // FIREBASE CONFIG & INITIALIZATION
+        // FIREBASE SETUP & INITIALIZATION
         // ==========================================
         let firebaseConfig = {
           apiKey: "AIzaSyAWA9jd1ud0F7aLuqY6L_Fy4f0JhgO12lk",
@@ -1051,19 +1051,28 @@
             }
         }
 
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'perthsanta-universe';
-
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // Path Generators (Rule 1 Compliant)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'perthsanta-universe';
+        const isCanvas = typeof __app_id !== 'undefined' || window.location.hostname.includes('usercontent.goog');
+
+        // Path Generators (Dinamik Geçiş: Canvas ortamında yetkilendirilmiş test yolları, Canlı sitede orijinal kök dizinler!)
         function getCollectionPath(colName) {
-            return collection(db, 'artifacts', appId, 'public', 'data', colName);
+            if (isCanvas) {
+                return collection(db, 'artifacts', appId, 'public', 'data', colName);
+            } else {
+                return collection(db, colName);
+            }
         }
 
         function getDocPath(colName, docId) {
-            return doc(db, 'artifacts', appId, 'public', 'data', colName, docId);
+            if (isCanvas) {
+                return doc(db, 'artifacts', appId, 'public', 'data', colName, docId);
+            } else {
+                return doc(db, colName, docId);
+            }
         }
 
         // ==========================================
@@ -1697,7 +1706,7 @@
                 const desiredUsername = document.getElementById('authUsername').value.trim();
                 
                 try {
-                    // Check if unique in memory to avoid query indexes (Rule 2 compliant)
+                    // Check username uniqueness in memory to prevent complex indices queries (Rule 2)
                     const usersSnap = await getDocs(getCollectionPath('users'));
                     let usernameExists = false;
                     usersSnap.forEach(uDoc => {
@@ -1744,7 +1753,7 @@
         });
 
         // ==========================================
-        // AUTH LIFE CYCLE & LISTENERS SUBSCRIPTION
+        // AUTHENTICATION FLOW & SNAPSHOT SUB (RULE 3)
         // ==========================================
         let unsubscribes = [];
         
@@ -1760,11 +1769,11 @@
             }
         };
 
-        // Initialize session
+        // Initialize Authentication immediately
         initAuth();
 
         onAuthStateChanged(auth, async (user) => {
-            // Unsubscribe existing snapshot observers to avoid leaks/multi-listeners
+            // Unsubscribe all active listeners to prevent duplications
             unsubscribes.forEach(u => u());
             unsubscribes = [];
 
@@ -1805,7 +1814,7 @@
                     }
                 }
 
-                // SUB 1: Posts Snap (Rule 2 Compliant in-memory sort)
+                // SUB 1: Posts Snap (Simple Query + In-Memory sorting for Rule 2)
                 const postsUnsub = onSnapshot(getCollectionPath('posts'), (snapshot) => {
                     window.allCommunityPosts = [];
                     snapshot.forEach((docSnapshot) => {
@@ -1816,7 +1825,7 @@
                         }
                     });
                     
-                    // Sort in memory by date descending
+                    // Sort in memory by createdAt descending
                     window.allCommunityPosts.sort((a, b) => {
                         const dateA = a.createdAt?.toDate ? a.createdAt.toDate() : new Date(a.createdAt || 0);
                         const dateB = b.createdAt?.toDate ? b.createdAt.toDate() : new Date(b.createdAt || 0);
@@ -1826,7 +1835,7 @@
                 }, (error) => console.error("Posts subscription error:", error));
                 unsubscribes.push(postsUnsub);
 
-                // SUB 2: Schedule Snap (Rule 2 Compliant in-memory sort)
+                // SUB 2: Schedule Snap (Simple Query + In-Memory sorting for Rule 2)
                 const schedUnsub = onSnapshot(getCollectionPath('schedule'), (snap) => {
                     window.allScheduleEvents = [];
                     snap.forEach(docSnap => {
@@ -1841,7 +1850,7 @@
                 }, (error) => console.error("Schedule subscription error:", error));
                 unsubscribes.push(schedUnsub);
 
-                // SUB 3: Music Snap (Simple collection fetch)
+                // SUB 3: Music Snap (Simple Query)
                 const musicUnsub = onSnapshot(getCollectionPath('music'), (snap) => {
                     window.allMusicItems = [];
                     snap.forEach(docSnap => {
@@ -1849,12 +1858,13 @@
                         data.id = docSnap.id;
                         window.allMusicItems.push(data);
                     });
+                    // Sort by newest
                     window.allMusicItems.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
                     window.renderMusic();
                 }, (error) => console.error("Music subscription error:", error));
                 unsubscribes.push(musicUnsub);
 
-                // SUB 4: Interviews Snap (Simple collection fetch)
+                // SUB 4: Interviews Snap (Simple Query)
                 const interviewUnsub = onSnapshot(getCollectionPath('interviews'), (snap) => {
                     window.allInterviewItems = [];
                     snap.forEach(docSnap => {
